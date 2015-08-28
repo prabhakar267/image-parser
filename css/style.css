@@ -1,0 +1,27 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,900);
+
+body{
+	font-family: 'Roboto', sans-serif;
+	background-color:rgb(249, 249, 249);
+}
+.form-main{
+	text-align: center;
+}
+.form-main .form-control{
+	border-radius: 0px;
+	border: 1px solid black;
+}
+.form-main .btn{
+	border-radius: 0px;
+}
+.header-image{
+    background-color: rgb(239, 250, 141);
+    background-image: url('../bg.png');
+    padding: 20px;
+    text-align: center;
+}
+.other-text{
+	font-size : 16px;
+	margin: 10px;
+	text-align: center;
+}
