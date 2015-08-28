@@ -1,7 +1,3 @@
-<?php
-    require 'inc/header.inc.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
