@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Prabhakar Gupta">
 
-    <title>Image Extractor</title>
+    <title>Image Parser</title>
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
+    <a href="https://github.com/prabhakar267/image-extractor" target="_blank"><img src="right-dusk-blue@2x.png" class="github-fork" /></a>
     <header class="header-image">
         <div class="container">
-            <h1><strong>Image Extractor</strong></h1>
+            <h1><strong>Image Parser</strong></h1>
             <h3>Enter any URL and get all the images on the page</h3>
+            <button type="button" class="action-buttons" data-toggle="modal" data-target="#aboutmodal">About</button>
+            <a href="extract.php?url=www.google.com" target="_blank"><button class="action-buttons">Get API</button></a>
         </div>
     </header>
     <hr>
@@ -83,6 +86,33 @@ if(isset($_GET['url'])){
     echo '<div class="other-text">Welcome :)</div>';
 }
 ?>
+
+<div class="modal fade" id="aboutmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Image-Parser</h4>
+            </div>
+            <div class="modal-body text-justify">
+                <strong>Image-Parser</strong> is a web-application which extracts all the images on any web link. You just need to enter the name (URL) of the website and you get all the images which are visible on that page.<br>It works for almost 75% of websites. (except for those with SSL certification)<br>
+                <hr>
+                For Developers<br>
+                <small>
+                It can also be used by other developers in their projects as an API. You simply need to provide the url of the page you want to extract as parameter and you will get the URLs of all the images as a JSON Array as response.<br>
+                <a href="extract.php?url=www.google.com" target="_blank">Sample</a>
+                </small>    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </body>
 </html>
