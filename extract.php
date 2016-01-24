@@ -1,6 +1,13 @@
 <?php
+/**
+ * @Author: Prabhakar Gupta
+ * @Date:   2016-01-24 14:40:16
+ * @Last Modified by:   Prabhakar Gupta
+ * @Last Modified time: 2016-01-24 14:41:38
+ */
 
-require 'inc/header.inc.php';
+require 'inc/function.inc.php';
+
 $final_response = array();
 $images = array();
 
@@ -28,7 +35,7 @@ if(isset($_GET['url'])){
 
         $parts = explode('/', $url);
         $Root = $parts[0].'//'.$parts[2];
-        $html = @file_get_contents($url);
+        $html = curl_URL_call($url);
         
         $final_response['url_searched'] = $url;
         $final_response['parent_url'] = $Root;
@@ -55,10 +62,17 @@ if(isset($_GET['url'])){
             $final_response['success'] = false;
         }
     }
+ 
     $final_response['images'] = $images;
-    echo json_encode($final_response);
+
+} else {
+    $message = "Please enter a URL to extract information as a 'url' parameter in GET request";
+    $final_response = array(
+        'url_searched'  => null,
+        'valid_url'     => false,
+        'success'       => false,
+        'message'       => $message,
+    );
 }
 
-function isValidURL($url){
-    return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $url);
-}
+echo json_encode($final_response);
