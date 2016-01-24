@@ -99,7 +99,7 @@ if(isset($_GET['url'])){
                 <hr>
                 For Developers<br>
                 <small>
-                It can also be used by other developers in their projects as an API. You simply need to provide the url of the page you want to extract as parameter and you will get the URLs of all the images as a JSON Array as response.<br>
+                It can also be used by other developers in their projects as an API. You simply need to provide the URL of the page you want to extract as the parameter and you will get the URLs of all the images as a JSON Array as a response.<br>
                 <a href="extract.php?url=www.google.com" target="_blank">Sample</a>
                 </small>    
             </div>
