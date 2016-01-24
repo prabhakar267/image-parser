@@ -3,13 +3,25 @@
  * @Author: Prabhakar Gupta
  * @Date:   2016-01-24 14:39:55
  * @Last Modified by:   Prabhakar Gupta
- * @Last Modified time: 2016-01-24 14:40:06
+ * @Last Modified time: 2016-01-24 14:45:28
  */
 
+
+/**
+ * function to check if the URL entered by the user is correct or not
+ * @param  string  $url URL to be passed which is to be checked
+ * @return boolean      returns if URL passed is valid or not
+ */
 function isValidURL($url){
     return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $url);
 }
 
+
+/**
+ * function to make a CURL call in order to fetch the complete HTML source code of URL entered
+ * @param  string $url URL of the page
+ * @return string      HTML source code of the URL entered
+ */
 function curl_URL_call($url){
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
