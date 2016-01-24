@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <a href="https://github.com/prabhakar267/image-extractor" target="_blank"><img src="right-dusk-blue@2x.png" class="github-fork" /></a>
+    <a href="https://github.com/prabhakar267/image-extractor" target="_blank"><img src="img/right-dusk-blue@2x.png" class="github-fork" /></a>
     <header class="header-image">
         <div class="container">
             <h1><strong>Image Parser</strong></h1>
@@ -105,7 +105,6 @@ if(isset($_GET['url'])){
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

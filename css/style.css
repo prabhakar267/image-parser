@@ -35,7 +35,7 @@ body{
 }
 .header-image{
     background-color: rgb(239, 250, 141);
-    background-image: url('../bg.png');
+    background-image: url('../img/bg.png');
     padding: 20px;
     text-align: center;
 }
