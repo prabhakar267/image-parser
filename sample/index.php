@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +11,18 @@
 
     <title>Image Parser</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <a href="https://github.com/prabhakar267/image-extractor" target="_blank"><img src="img/right-dusk-blue@2x.png" class="github-fork" /></a>
+    <a href="https://www.github.com/prabhakar267/image-extractor" target="_blank"><img src="img/right-dusk-blue@2x.png" class="github-fork" /></a>
     <header class="header-image">
         <div class="container">
             <h1><strong>Image Parser</strong></h1>
             <h3>Enter any URL and get all the images on the page</h3>
             <button type="button" class="action-buttons" data-toggle="modal" data-target="#aboutmodal">About</button>
-            <a href="extract.php?url=www.google.com" target="_blank"><button class="action-buttons">Get API</button></a>
+            <a href="../image-extractor.php?url=www.google.com" target="_blank"><button class="action-buttons">Get API</button></a>
         </div>
     </header>
     <hr>
@@ -27,7 +30,6 @@
         <div class="row">
             <div class="col-md-12">
                 <form class="form-horizontal form-main" method="GET">
-                      <!-- <label class="control-label" for="inputSuccess1">URL : </label> -->
                       <input type="text" class="form-control" name="url" placeholder="Enter the URL from where images are to be extracted" required>
                       <br>
                       <button type="submit" class="btn btn-lg btn-success">Extract</button>
@@ -110,8 +112,8 @@ if(isset($_GET['url'])){
     </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 </body>
 </html>

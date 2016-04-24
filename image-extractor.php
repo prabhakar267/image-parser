@@ -3,10 +3,10 @@
  * @Author: Prabhakar Gupta
  * @Date:   2016-01-24 14:40:16
  * @Last Modified by:   Prabhakar Gupta
- * @Last Modified time: 2016-01-24 15:00:35
+ * @Last Modified time: 2016-04-24 15:25:14
  */
 
-require 'inc/function.inc.php';
+require_once 'inc/function.inc.php';
 
 $final_response = array();
 $images = array();
