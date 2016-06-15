@@ -13,7 +13,7 @@ h1 {
 	padding: 20px 20px 20px 20px;
 }
 .input {
-	width: 500px;
+	width: 300px;
 	text-align: center;
 	color: black;
 }
@@ -28,14 +28,13 @@ h2 {
 	margin: 20px;
 	float: left;
 }
-.no-js #loader { display: none;  }
-.js #loader { display: block; position: absolute; left: 100px; top: 0; }
-.se-pre-con {
+.loader {
+	display: none;
 	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
+	left: 25%;
+	top: 25%;
+	width: 50%;
+	height: 60%;
 	z-index: 9999;
-	background: url("../img/preloader.gif") center no-repeat #fff;
+	background: url("../img/preloader.gif") center no-repeat #ffffff;
 }
