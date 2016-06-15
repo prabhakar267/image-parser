@@ -5,7 +5,7 @@ Image Extractor uses AJAX for parsing images.
 
 It can also be used by other developers in their projects as an API. You simply need to provide the url of the page you want to extract as parameter and you will get the URLs of all the images as a JSON Array as response.
 
-URL : http://www.prabhakargupta.com/projects/image-extractor/index.php<br>
+URL : http://anirudhgoel.xyz/Image-Extractor/<br>
 <img src="screenshots/screenshot1.png" />
 
 <hr>
