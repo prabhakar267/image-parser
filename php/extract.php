@@ -1,6 +1,6 @@
 <?php
 
-require 'inc/header.inc.php';
+require '../inc/header.inc.php';
 $final_response = array();
 $images = array();
 

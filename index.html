@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="author" content="Anirudh Goel" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,300">
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<title>Image Parser</title>
+</head>
+<body>
+	<div class="se-pre-con"></div>
+	<div>
+		<h1>Image Parser</h1>
+	</div>
+	<div id="effect">
+		<br><br><br><br><br><br>
+	</div>
+	<div>
+		<input type="text" class="input input-lg" id="url" placeholder="Enter a valid URL to extract images" onkeypress="checkEnter(event)"></input>
+		<br>
+		<br>
+		<input type="submit" class="btn btn-lg btn-success" onclick="parse()" value="Extract Images"></input>
+	</div>
+	<br><br>
+	<div id="result" class="container"></div>
+</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+</html>
