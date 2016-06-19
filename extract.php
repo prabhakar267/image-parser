@@ -69,10 +69,10 @@ if(isset($_GET['url'])){
                     $src = $src_key[1];
 
                     if(!preg_match("/http:/", $src) && !preg_match("/https:/", $src)){
-                    	/**
-                    	 * check whether the URL in the src is absolute or relative
-                    	 * if it is relative, make it absolute
-                    	 */
+                        /**
+                         * check whether the URL in the src is absolute or relative
+                         * if it is relative, make it absolute
+                         */
                         if($src[0] == '/' && $src[1] == '/'){
                             $src = 'http:'.$src;
                         } else if($src[0] == '/'){
@@ -85,17 +85,17 @@ if(isset($_GET['url'])){
                 }
             }
         } else {
-        	/**
-        	 * No images were found in the HTML
-        	 * source code, hence success if false
-        	 */
+            /**
+             * No images were found in the HTML
+             * source code, hence success if false
+             */
             $final_response['success'] = false;
         }
     }
- 	/**
- 	 * All the images are added to the images array in 
- 	 * final response
- 	 */
+    /**
+     * All the images are added to the images array in 
+     * final response
+     */
     $final_response['images'] = $images;
 
 } else {

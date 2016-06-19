@@ -6,8 +6,10 @@ It works for almost all of websites and extracts all the images (**except the im
 
 Same can be done as an API. You simply need to provide the url of the page you want to extract as parameter and you will get the URLs of all the images as a JSON Array as response.
 
-URL : [http://www.prabhakargupta.com/projects/image-extractor/](http://www.prabhakargupta.com/projects/image-extractor/)
-![](/sample/img/screenshot/screencapture-localhost-image-extractor-1453627899413.png?raw=true)
+URL : [http://anirudhgoel.xyz/Image-Extractor/sample/](http://anirudhgoel.xyz/Image-Extractor/sample/)
+![Screenshot 1](/sample/screenshots/ss1.png)<br>
+![Screenshot 2](/sample/screenshots/ss2.png)<br>
+![Screenshot 3](/sample/screenshots/ss3.png)<br>
 
 ---
 
