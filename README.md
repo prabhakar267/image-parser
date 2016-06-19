@@ -14,4 +14,4 @@ URL : [http://anirudhgoel.xyz/Image-Extractor/sample/](http://anirudhgoel.xyz/Im
 ---
 
 API URL : [http://prabhakargupta.com/projects/image-extractor/extract.php](http://prabhakargupta.com/projects/image-extractor/extract.php)
-![Screenshot](/sample/screenshots/ss3.png?raw=true)
+![Screenshot](/sample/screenshots/ss4.png?raw=true)
