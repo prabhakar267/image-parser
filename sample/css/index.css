@@ -1,0 +1,40 @@
+body {
+	text-align: center;
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 400;
+	background-image: url("../img/back.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	color: white;
+}
+h1 {
+	font-size: 80px;
+	padding: 20px 20px 20px 20px;
+}
+.input {
+	width: 300px;
+	text-align: center;
+	color: black;
+}
+#result {
+	font-size: 25px;
+}
+h2 {
+	font-size: 40px;
+}
+.images {
+	width: 200px;
+	margin: 20px;
+	float: left;
+}
+.loader {
+	display: none;
+	position: fixed;
+	left: 25%;
+	top: 25%;
+	width: 50%;
+	height: 60%;
+	z-index: 9999;
+	background: url("../img/preloader.gif") center no-repeat #ffffff;
+}
