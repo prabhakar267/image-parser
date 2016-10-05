@@ -10,10 +10,11 @@ require_once 'inc/function.inc.php';
 
 $final_response = array();
 $images = array();
+$links = array();
 
 if(isset($_GET['url'])){
     $url = $_GET['url'];
-    
+
     $parts = explode('/', trim($url));
 
     /**
@@ -50,9 +51,12 @@ if(isset($_GET['url'])){
          * @var string
          */
         $Root = $parts[0].'//'.$parts[2];
-        
+
         $html = curl_URL_call($url);
-        
+
+        $dom = new DOMDocument;
+        $dom->loadHTML($html);
+
         $final_response['url_searched'] = $url;
         $final_response['parent_url'] = $Root;
 
@@ -91,12 +95,22 @@ if(isset($_GET['url'])){
         	 */
             $final_response['success'] = false;
         }
+
+      /**
+       * Getting urls for stylesheets in the webpage
+       */
+        foreach ($dom->getElementsByTagName('link') as $node) {
+            if ($node->getAttribute("rel") == "stylesheet") {
+                array_push($links,$node->getAttribute("href"));
+            }
+        }
     }
  	/**
- 	 * All the images are added to the images array in 
+ 	 * All the images are added to the images array in
  	 * final response
  	 */
     $final_response['images'] = $images;
+    $final_response['links'] = $links;
 
 } else {
     $message = "Please enter a URL to extract information as a 'url' parameter in GET request";
