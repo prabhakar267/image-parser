@@ -101,7 +101,10 @@ if(isset($_GET['url'])){
        */
         foreach ($dom->getElementsByTagName('link') as $node) {
             if ($node->getAttribute("rel") == "stylesheet") {
-                array_push($links,$node->getAttribute("href"));
+                $css = curl_URL_call($node->getAttribute("href"));
+                $matches = array();
+                preg_match_all('/url\(\s*[\'"]?(\S*\.(?:jpe?g|gif|png))[\'"]?\s*\)[^;}]*?/i', $css, $matches);
+                array_push($links, $matches[1]);
             }
         }
     }
