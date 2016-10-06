@@ -5,12 +5,14 @@
  * @Last Modified by:   Prabhakar Gupta
  * @Last Modified time: 2016-04-24 15:25:14
  */
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 require_once 'inc/function.inc.php';
 
 $final_response = array();
 $images = array();
-$links = array();
 
 if(isset($_GET['url'])){
     $url = $_GET['url'];
@@ -101,10 +103,54 @@ if(isset($_GET['url'])){
        */
         foreach ($dom->getElementsByTagName('link') as $node) {
             if ($node->getAttribute("rel") == "stylesheet") {
-                $css = curl_URL_call($node->getAttribute("href"));
+                $css_route = $node->getAttribute("href");
+               /**
+                * check whether the URL in the $css_route is absolute or relative
+                * if it is relative, make it absolute
+                */
+                if($css_route[0] == '/' && $css_route[1] == '/'){
+                    $css_route = 'http:'.$css_route;
+                } else if($css_route[0] == '/'){
+                    $css_route = $Root.$css_route;
+                } else if($css_route[0] != 'h'){
+                    $css_route = $Root.'/'.$css_route;
+                }
+                $parts = explode('/', $css_route);
+                $parts_length = sizeof($parts);
+                $css_root = $parts[0].'//'.$parts[2];
+                $css_active_dir = $css_root;
+                $css_parent_dir = $css_root;
+                for ($i = 3; $i < $parts_length - 1; ++$i) {
+                    if($i < $parts_length - 2) {
+                        $css_active_dir = $css_active_dir.'/'.$parts[$i];
+                        $css_parent_dir = $css_parent_dir.'/'.$parts[$i];
+                    } else {
+                        $css_active_dir = $css_active_dir.'/'.$parts[$i];
+                    }
+                }
+                $css = curl_URL_call($css_route);
                 $matches = array();
+               /**
+                * Getting image urls using image extension matches in stylesheet extracted
+                */
                 preg_match_all('/url\(\s*[\'"]?(\S*\.(?:jpe?g|gif|png))[\'"]?\s*\)[^;}]*?/i', $css, $matches);
-                array_push($links, $matches[1]);
+
+                foreach ($matches[1] as $image_link) {
+                   /**
+                    * check whether the URL in the $image_link is absolute or relative
+                    * if it is relative, make it absolute
+                    */
+                    if($image_link[0] == '.' && $image_link[1] == '.'){
+                        $image_link = $css_parent_dir.substr($image_link, 2);
+                    } else if($image_link[0] == '.'){
+                        $image_link = $css_active_dir.substr($image_link, 1);
+                    } else if($image_link[0] == '/'){
+                        $image_link = $css_active_dir.$image_link;
+                    } else {
+                        $image_link = $css_active_dir.'/'.$image_link;
+                    }
+                    array_push($images, $image_link);
+                }
             }
         }
     }
@@ -113,7 +159,6 @@ if(isset($_GET['url'])){
  	 * final response
  	 */
     $final_response['images'] = $images;
-    $final_response['links'] = $links;
 
 } else {
     $message = "Please enter a URL to extract information as a 'url' parameter in GET request";
