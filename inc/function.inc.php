@@ -1,11 +1,4 @@
 <?php
-/**
- * @Author: Prabhakar Gupta
- * @Date:   2016-01-24 14:39:55
- * @Last Modified by:   Prabhakar Gupta
- * @Last Modified time: 2016-01-24 14:45:28
- */
-
 
 /**
  * function to check if the URL entered by the user is correct or not

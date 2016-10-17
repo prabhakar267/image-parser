@@ -1,13 +1,11 @@
 <?php
+
 /**
- * @Author: Prabhakar Gupta
- * @Date:   2016-01-24 14:40:16
- * @Last Modified by:   Prabhakar Gupta
- * @Last Modified time: 2016-04-24 15:25:14
+ * error reporting disabled, if you want to enable it
+ * change it to "error_reporting(E_ALL)"
+ * ref : http://php.net/manual/en/function.error-reporting.php
  */
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+error_reporting(0);
 
 require_once 'inc/function.inc.php';
 
