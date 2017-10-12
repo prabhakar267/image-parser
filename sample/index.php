@@ -29,10 +29,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form class="form-horizontal form-main" method="GET">
-                      <input type="text" class="form-control" name="url" placeholder="Enter the URL from where images are to be extracted" required>
-                      <br>
-                      <button type="submit" class="btn btn-lg btn-success">Extract</button>
+                <form id="form-extractor" class="form-horizontal form-main" method="GET">
+                    <input type="text" class="form-control" name="url" placeholder="Enter the URL from where images are to be extracted" required>
+                    <br>
+                    <button type="submit" class="btn btn-lg btn-success">Extract</button>
+                    <div id="download-file"></div>
                 </form>
             </div>
         </div>
@@ -44,7 +45,7 @@ function isValidURL($url){
 
 if(isset($_GET['url'])){
     $url = $_GET['url'];
-    
+
     $parts = explode('/', $url);
 
     $flag = ($parts[0] == 'http:' || $parts[0] == 'https:') ? true : false;
@@ -63,7 +64,7 @@ if(isset($_GET['url'])){
     $parts = explode('/', $url);
     $Root = $parts[0].'//'.$parts[2];
     $html = @file_get_contents($url);
-    
+
     if(preg_match_all('/<img[^>]+>/i',$html, $result)){
         echo '<div class="other-text"><strong>URL Searched</strong> : <a href="'.$url.'" target="_blank">'.$url.'</a><br><strong>Parent Domain</strong> : <a href="'.$Root.'" target="_blank">'.$Root.'</a><br></div>';
         foreach ($result[0] as $key) {
@@ -103,7 +104,7 @@ if(isset($_GET['url'])){
                 <small>
                 It can also be used by other developers in their projects as an API. You simply need to provide the URL of the page you want to extract as the parameter and you will get the URLs of all the images as a JSON Array as a response.<br>
                 <a href="extract.php?url=www.google.com" target="_blank">Sample</a>
-                </small>    
+                </small>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -112,8 +113,16 @@ if(isset($_GET['url'])){
     </div>
 </div>
 
-<script src="js/jquery.min.js"></script>
+<script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
+<script>
+$( document ).ready(function() {
+  $("#form-extractor").submit(function() {
+    console.log("kiara");
+    event.preventDefault();
+    $("#download-file").replaceWith("<a class='btn btn-lg btn-info' target='_blank' href='public/Images.zip'>Download zip file</a>");
+  });
+});
+</script>
 </body>
 </html>
