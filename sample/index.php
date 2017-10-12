@@ -30,9 +30,14 @@
         <div class="row">
             <div class="col-md-12">
                 <form class="form-horizontal form-main" method="GET">
-                      <input type="text" class="form-control" name="url" placeholder="Enter the URL from where images are to be extracted" required>
-                      <br>
-                      <button type="submit" class="btn btn-lg btn-success">Extract</button>
+                    <input type="text" class="form-control" name="url" placeholder="Enter the URL from where images are to be extracted" required>
+                    <br>
+                    <button type="submit" class="btn btn-lg btn-success">Extract</button>
+                    <!-- 
+                        So Sophie you can add the download button here
+                        Use this link to get the compressed file
+                        Link: public/Images.zip
+                    -->
                 </form>
             </div>
         </div>
@@ -42,9 +47,40 @@ function isValidURL($url){
     return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $url);
 }
 
+function generateZIPAchive($images) {
+    $zip = new ZipArchive();
+
+    // File path of the Temporary ZIP file
+    $filePath = $_SERVER['DOCUMENT_ROOT'] . "/image-extractor/sample/public/Images.zip";
+
+    // Check if that file exists then delete it from the server and create new one
+    if ($filePath) {
+        unlink ($filePath); 
+    }
+    
+    // $tempFile = tempnam('Images', '');
+    $flag = $zip->open($filePath, ZipArchive::CREATE);
+    
+    if ($flag) {
+        // Loop through each image to download it and add to the ZIP
+        foreach($images as $image){
+            // Download the file
+            $downloadFile = file_get_contents($image);
+            
+            // Add to the ZIP
+            $zip->addFromString(basename($image), $downloadFile);
+        }
+        $zip->close();
+    } else {
+        echo "Error";
+    }
+}
+
 if(isset($_GET['url'])){
     $url = $_GET['url'];
     
+    $imagesArray = [];
+
     $parts = explode('/', $url);
 
     $flag = ($parts[0] == 'http:' || $parts[0] == 'https:') ? true : false;
@@ -78,9 +114,12 @@ if(isset($_GET['url'])){
                     else
                         $src = $Root.'/'.$src;
                 }
+                array_push($imagesArray, $src);
                 echo '<a href="'.$src.'"><img src="'.$src.'" width="250" style="margin:20px"></a>'."\n";
             }
         }
+        // Calling the ZIP function to compress all images.
+        generateZIPAchive($imagesArray);
     } else {
 		echo '<div class="other-text"><b>No Image Found at your Given Location</b></div>';
     }
