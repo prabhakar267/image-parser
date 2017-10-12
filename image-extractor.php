@@ -12,8 +12,7 @@ require_once 'inc/function.inc.php';
 $final_response = array();
 $images = array();
 
-if(isset($_GET['url']))
-{
+if(isset($_GET['url'])){
     $url = $_GET['url'];
 
     $parts = explode('/', trim($url));
@@ -30,16 +29,13 @@ if(isset($_GET['url']))
     /**
      * check whether URL entered by user is correct or not
      */
-    if(!isValidURL($url))
-    {
+    if(!isValidURL($url)){
         $final_response = array(
             'url_searched'  => $url,
             'valid_url'     => false,
             'success'       => false
         );
-    } 
-    else 
-    {
+    } else {
         $final_response['valid_url'] = true;
 
         /**
@@ -58,8 +54,7 @@ if(isset($_GET['url']))
 
         $html = curl_URL_call($url);
 
-        if(!is_null($html))
-        {
+        if(!is_null($html)){
             $dom = new DOMDocument;
             $dom->loadHTML($html);
 
@@ -69,8 +64,7 @@ if(isset($_GET['url']))
             /**
              * check if there is any image in HTML source code or not
              */
-            if(preg_match_all('/<img[^>]+>/i',$html, $result))
-            {
+            if(preg_match_all('/<img[^>]+>/i',$html, $result)){
                 $final_response['success'] = true;
 
                 foreach ($result[0] as $key) {
@@ -95,9 +89,7 @@ if(isset($_GET['url']))
                         array_push($images, $src);
                     }
                 }
-            } 
-            else 
-            {
+            } else {
                 /**
                  * No images were found in the HTML
                  * source code, hence success if false
@@ -108,10 +100,8 @@ if(isset($_GET['url']))
           /**
            * Getting urls for stylesheets in the webpage
            */
-            foreach ($dom->getElementsByTagName('link') as $node) 
-            {
-                if ($node->getAttribute("rel") == "stylesheet") 
-                {
+            foreach ($dom->getElementsByTagName('link') as $node) {
+                if ($node->getAttribute("rel") == "stylesheet") {
                     $css_route = $node->getAttribute("href");
                    /**
                     * check whether the URL in the $css_route is absolute or relative
@@ -144,8 +134,7 @@ if(isset($_GET['url']))
                     */
                     preg_match_all('/url\(\s*[\'"]?(\S*\.(?:jpe?g|gif|png))[\'"]?\s*\)[^;}]*?/i', $css, $matches);
 
-                    foreach ($matches[1] as $image_link) 
-                    {
+                    foreach ($matches[1] as $image_link) {
                        /**
                         * check whether the URL in the $image_link is absolute or relative
                         * if it is relative, make it absolute
@@ -163,9 +152,7 @@ if(isset($_GET['url']))
                     }
                 }
             }
-    }
-        
-    else
+    }else
     {
         $message = "The URL is unaccessible";
         $final_response = array(
@@ -174,19 +161,15 @@ if(isset($_GET['url']))
             'success'       => false,
             'message'       => $message,
         );
-        
-    }
- 	/**
+        }
+        /**
  	 * All the images are added to the images array in
  	 * final response
  	 */
     $final_response['images'] = $images;
  }
 
-}
-
-else 
-{
+}else {
     $message = "Please enter a URL to extract information as a 'url' parameter in GET request";
     $final_response = array(
         'url_searched'  => null,

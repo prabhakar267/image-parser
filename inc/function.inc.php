@@ -20,11 +20,7 @@ function curl_URL_call($url){
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-    
-    
-    $retcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    
-    if (200==$retcode) {
+    if (200==curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
         $output = curl_exec($ch);
         curl_close($ch);
         return $output;
