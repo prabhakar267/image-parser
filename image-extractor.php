@@ -13,8 +13,12 @@ $final_response = get_extracted_images();
 
 echo json_encode($final_response);
 
-function get_extracted_images()
-{
+
+/**
+ * function to extract images from URL in GET Parameter
+ * @return response object
+ */
+function get_extracted_images() {
     $final_response = array();
     $images = array();
 
@@ -181,9 +185,7 @@ function get_extracted_images()
         return $final_response;
 
     } else {
-
         $message = "Please enter a URL to extract information as a 'url' parameter in GET request";
-
         return array(
             'url_searched' => null,
             'valid_url' => false,
