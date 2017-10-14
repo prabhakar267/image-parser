@@ -33,7 +33,6 @@
                     <input type="text" class="form-control" name="url" placeholder="Enter the URL from where images are to be extracted" required>
                     <br>
                     <button type="submit" class="btn btn-lg btn-success">Extract</button>
-                    <div id="download-file"></div>
                 </form>
             </div>
         </div>
@@ -66,7 +65,10 @@ if(isset($_GET['url'])){
     $html = @file_get_contents($url);
 
     if(preg_match_all('/<img[^>]+>/i',$html, $result)){
-        echo '<div class="other-text"><strong>URL Searched</strong> : <a href="'.$url.'" target="_blank">'.$url.'</a><br><strong>Parent Domain</strong> : <a href="'.$Root.'" target="_blank">'.$Root.'</a><br></div>';
+        echo '<div class="container"><div class="row">';
+        echo '<div class="col-xs-12 other-text text-center"><strong>URL Searched</strong> : <a href="'.$url.'" target="_blank">'.$url.'</a><br><strong>Parent Domain</strong> : <a href="'.$Root.'" target="_blank">'.$Root.'</a><br></div>';
+        echo '<div class="col-xs-12 text-center" id="download-file" ><a class="btn btn-lg btn-info" target="_blank" href="#">Download zip file</a></div>';
+        echo '</div></div>';
         foreach ($result[0] as $key) {
             preg_match('/src="([^"]+)/i',$key, $src_key);
             for($i=0;$i<count($src_key);$i+=2){
@@ -112,17 +114,8 @@ if(isset($_GET['url'])){
         </div>
     </div>
 </div>
-
+    
 <script src="js/jquery-2.2.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script>
-$( document ).ready(function() {
-  $("#form-extractor").submit(function() {
-    console.log("kiara");
-    event.preventDefault();
-    $("#download-file").replaceWith("<a class='btn btn-lg btn-info' target='_blank' href='public/Images.zip'>Download zip file</a>");
-  });
-});
-</script>
 </body>
 </html>
