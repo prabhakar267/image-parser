@@ -1,5 +1,5 @@
 # Image Parser
-Image Parser (or Image Extractor) is a web-application which extracts all the images on any public URL.
+Image Parser is a web-application which extracts all the images on any public URL.
 You just need to enter the name (URL) of the website and you get all the images which are visible and added in CSS files for that page.
 
 It works for almost all of websites and extracts all the images.
