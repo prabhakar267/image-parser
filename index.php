@@ -11,8 +11,8 @@
 
     <title>Image Parser</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -115,7 +115,7 @@ if(isset($_GET['url'])){
     </div>
 </div>
     
-<script src="js/jquery-2.2.0.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="assets/js/jquery-2.2.0.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>
