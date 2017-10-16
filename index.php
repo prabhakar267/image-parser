@@ -8,7 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Prabhakar Gupta">
-
+    <meta name="description" content="Image-Parser is an awesome web-application that will allow you to extract all images on any website.">
+    <meta name="keywords" content="Image Website Extractor, Parser, Download Images, Visible Image on Page, Developer Tool, Images from Website, Extract Images">
+    <meta property="og:site_name" content="Image Parser"/>
+    <meta property="og:title" content="Image Parser"/>
+    <meta property="og:url" content="https://image-parser.herokuapp.com/"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:description" content="Image-Parser is an awesome web-application that will allow you to extract all images on any website.">
+    <meta property="og:image" content="assets/img/image-parser.png"/>
     <title>Image Parser</title>
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -16,7 +23,7 @@
 </head>
 
 <body>
-    <a href="https://www.github.com/prabhakar267/image-extractor" target="_blank"><img src="img/right-dusk-blue@2x.png" class="github-fork" /></a>
+    <a href="https://www.github.com/prabhakar267/image-extractor" target="_blank"><img src="assets/img/right-dusk-blue@2x.png" class="github-fork" /></a>
     <header class="header-image">
         <div class="container">
             <h1><strong>Image Parser</strong></h1>
