@@ -19,7 +19,7 @@
 
     <title>Image Parser</title>
 
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
@@ -123,7 +123,7 @@ if(isset($_GET['url'])){
     </div>
 </div>
     
-<script src="assets/js/jquery-2.2.0.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
