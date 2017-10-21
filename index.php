@@ -30,7 +30,7 @@
             <h1><strong>Image Parser</strong></h1>
             <h3>Enter any URL and get all the images on the page</h3>
             <button type="button" class="action-buttons" data-toggle="modal" data-target="#aboutmodal">About</button>
-            <a href="../image-extractor.php?url=www.google.com" target="_blank"><button class="action-buttons">Get API</button></a>
+            <a href="./api/image-parser.php?url=www.google.com" target="_blank"><button class="action-buttons">Get API</button></a>
         </div>
     </header>
     <hr>
