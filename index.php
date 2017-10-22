@@ -40,65 +40,24 @@
                 <form id="form-extractor" class="form-horizontal form-main" method="GET">
                     <input type="text" class="form-control" name="url" placeholder="Enter the URL from where images are to be extracted" required>
                     <br>
-                    <button type="submit" class="btn btn-lg btn-success">Extract</button>
+                    <button type="submit" id="submit" class="btn btn-lg btn-success">Extract</button>
                 </form>
             </div>
         </div>
     </div>
-<?php
-function isValidURL($url){
-    return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $url);
-}
-
-if(isset($_GET['url'])){
-    $url = $_GET['url'];
-
-    $parts = explode('/', $url);
-
-    $flag = ($parts[0] == 'http:' || $parts[0] == 'https:') ? true : false;
-
-    if($flag == false)
-        $url = 'http://'.$url;
-
-    if(!isValidURL($url)){
-        echo '<div class="other-text">Invalid URL!</div>';
-		die;
-	}
-
-    if(substr($url, strlen($url)-1) == '/')
-        $url = rtrim($url, "/");
-
-    $parts = explode('/', $url);
-    $Root = $parts[0].'//'.$parts[2];
-    $html = @file_get_contents($url);
-
-    if(preg_match_all('/<img[^>]+>/i',$html, $result)){
-        echo '<div class="container"><div class="row">';
-        echo '<div class="col-xs-12 other-text text-center"><strong>URL Searched</strong> : <a href="'.$url.'" target="_blank">'.$url.'</a><br><strong>Parent Domain</strong> : <a href="'.$Root.'" target="_blank">'.$Root.'</a><br></div>';
-        echo '<div class="col-xs-12 text-center" id="download-file" ><a class="btn btn-lg btn-info" target="_blank" href="#">Download zip file</a></div>';
-        echo '</div></div>';
-        foreach ($result[0] as $key) {
-            preg_match('/src="([^"]+)/i',$key, $src_key);
-            for($i=0;$i<count($src_key);$i+=2){
-                $src = $src_key[1];
-                if(!preg_match("/http:/", $src) && !preg_match("/https:/", $src)){
-                    if($src[0]=='/' && $src[1]=='/')
-                        $src = 'http:'.$src;
-                    elseif($src[0]=='/')
-                        $src = $Root.$src;
-                    else
-                        $src = $Root.'/'.$src;
-                }
-                echo '<a href="'.$src.'"><img src="'.$src.'" width="250" style="margin:20px"></a>'."\n";
-            }
-        }
-    } else {
-		echo '<div class="other-text"><b>No Image Found at your Given Location</b></div>';
-    }
-} else {
-    echo '<div class="other-text">Welcome :)</div>';
-}
-?>
+    <div class="spinner" style="display:none;">
+      <div class="rect1"></div> <div class="rect2"></div> <div class="rect3"></div> <div class="rect4"></div> <div class="rect5"></div>
+    </div>
+    <div id="stats" class="container" style="display:none;">
+        <div class="row">
+          <div class="col-xs-12 other-text text-center"></div>
+          <div class="col-xs-12 text-center" id="download-file" >
+              <a class="btn btn-lg btn-info" target="_blank" href="#">Download zip file</a>
+          </div> 
+        </div>
+    </div>
+		<div id="result" class="other-text">Welcome :)</div>
+</div>
 
 <div class="modal fade" id="aboutmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -125,5 +84,7 @@ if(isset($_GET['url'])){
     
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="assets/script.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
