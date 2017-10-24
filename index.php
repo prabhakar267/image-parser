@@ -38,9 +38,9 @@
         <div class="row">
             <div class="col-md-12">
                 <form id="form-extractor" class="form-horizontal form-main" method="GET">
-                    <input type="text" class="form-control" name="url" placeholder="Enter the URL from where images are to be extracted" required>
+                    <input type="text" class="form-control" name="url" placeholder="Enter the URL from where images are to be extracted" required autofocus>
                     <br>
-                    <button type="submit" id="submit" class="btn btn-lg btn-success">Extract</button>
+                    <button type="button" id="submit" class="btn btn-lg btn-success">Extract</button>
                 </form>
             </div>
         </div>
@@ -85,6 +85,6 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="assets/script.js" type="text/javascript" charset="utf-8"></script>
+<script src="assets/js/script.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
