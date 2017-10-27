@@ -38,15 +38,23 @@ function get_extracted_images() {
         /**
          * check whether URL entered by user is correct or not
          */
-        if (!isValidURL($url)) {
+        // if (!isValidURL($url)) {
 
+        //     return array(
+        //         'url_searched' => $url,
+        //         'valid_url' => false,
+        //         'success' => false
+        //     );
+
+        // }
+        if(!validate_url($url)) {
             return array(
                 'url_searched' => $url,
                 'valid_url' => false,
                 'success' => false
             );
-
-        } else {
+        }
+         else {
 
             $final_response['valid_url'] = true;
 
@@ -199,10 +207,18 @@ function get_extracted_images() {
  * @param  string  $url URL to be passed which is to be checked
  * @return boolean      returns if URL passed is valid or not
  */
-function isValidURL($url){
-    return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $url);
-}
+// function isValidURL($url){
+//     return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $url);
+// }
 
+function validate_url($url) {
+    $url    =   htmlentities($url); // get rid of XSS attack and mysqli injections
+    if (preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$url)) {
+        return $url;
+      } else {
+          return false;
+      }
+}
 
 /**
  * function to make a CURL call in order to fetch the complete HTML source code of URL entered
@@ -218,3 +234,5 @@ function curl_URL_call($url){
     curl_close($ch);
     return $output;
 }
+
+
