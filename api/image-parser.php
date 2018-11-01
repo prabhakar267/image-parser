@@ -6,7 +6,7 @@
  * ref : http://php.net/manual/en/function.error-reporting.php
  */
 error_reporting(0);
-
+//error_reporting(E_ALL);
 $final_response = get_extracted_images();
 
 echo json_encode($final_response);
